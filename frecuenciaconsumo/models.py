@@ -4,12 +4,14 @@ from django.db import models
 
 class Unidad(models.Model):
     nombre = models.CharField(max_length=250)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ('nombre',)
 
     def __str__(self):
-        return self.nombre
+        return self.nombre.encode('utf-8').strip()
         
 class Racion(models.Model):
     nombre = models.CharField(max_length=250)
@@ -23,4 +25,5 @@ class Racion(models.Model):
         ordering = ('nombre',)
 
     def __str__(self):
-        return self.nombre
+        return self.nombre.encode('utf-8').strip()
+    
